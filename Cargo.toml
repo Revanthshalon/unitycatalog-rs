@@ -1,0 +1,10 @@
+[workspace]
+members = ["server"]
+resolver = "3"
+
+[workspace.dependencies]
+tokio = { version = "1.43.0" }
+serde = { version = "1.0.217" }
+serde_json = { version = "1.0.137" }
+tracing = { version = "0.1.41" }
+tracing-subscriber = { version = "0.3.19" }
