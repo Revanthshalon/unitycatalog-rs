@@ -1,0 +1,8 @@
+database_type = "postgres"
+username = "user"
+password = "password"
+host = "localhost"
+port = 8080
+max_idle_connections = 32
+max_open_connections = 64
+connection_timeout = 30
