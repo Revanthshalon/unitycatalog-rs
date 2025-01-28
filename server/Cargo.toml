@@ -1,6 +1,6 @@
 [package]
 name = "unitycatalog-server"
-description = ""
+description = "Unity Catalog Server"
 repository.workspace = true
 authors.workspace = true
 rust-version.workspace = true
