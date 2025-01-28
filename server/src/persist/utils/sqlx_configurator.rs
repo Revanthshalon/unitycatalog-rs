@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use crate::config::database_config::DatabaseConfig;
+use crate::config::DatabaseConfig;
 use sqlx::{Pool, Postgres};
 
 pub struct SqlxConfigurator {
