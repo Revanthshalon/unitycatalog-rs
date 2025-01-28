@@ -45,7 +45,7 @@ jobs:
           path: ./tarpaulin-report.xml
 
       - name: Upload to codecov.io
-        uses: codecov/codecov-action@v4.6.0
+        uses: codecov/codecov-action@v5.3.1
         with:
           file: ./tarpaulin-report.xml
           fail_ci_if_error: true
