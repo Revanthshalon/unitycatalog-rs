@@ -20,4 +20,7 @@ serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 tracing = { workspace = true, features = ["log"] }
 tracing-subscriber = { workspace = true, features = ["serde", "serde_json", "env-filter"]}
-
+sqlx = { workspace = true, features = ["macros", "runtime-tokio", "any", "postgres", "mysql", "chrono", "uuid"]}
+uuid = { workspace = true, features = ["v4", "serde"]}
+chrono = { workspace = true, features = ["serde"]}
+config = { workspace = true }
