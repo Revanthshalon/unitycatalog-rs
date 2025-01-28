@@ -10,7 +10,10 @@ license = "Apache-2.0"
 readme = "README.md"
 version = "0.0.1"
 authors = ["Revanth Shalon Raj <revanthshalonraj@gmail.com>"]
+repository = "https://github.com/Revanthshalon/unitycatalog-rs"
 keywords = ["unity", "catalog", "unitycatalog"]
+description = "Open, Multi-modal Catalog for Data & AI - Written in Rust"
+rust-version = "1.84.0"
 
 [workspace.dependencies]
 tokio = { version = "^1.43.0" }
