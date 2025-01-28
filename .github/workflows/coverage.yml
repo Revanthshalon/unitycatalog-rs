@@ -48,6 +48,9 @@ jobs:
         uses: codecov/codecov-action@v5.3.1
         with:
           file: ./tarpaulin-report.xml
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+            slug: Revanthshalon/unitycatalog-rs
           fail_ci_if_error: true
           flags: unittests
           name: codecov-umbrella
