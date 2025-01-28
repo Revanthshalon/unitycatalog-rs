@@ -1,8 +1,8 @@
-use config::database_config::DatabaseConfig;
-
 mod config;
 mod errors;
 mod persist;
+
+use config::DatabaseConfig;
 
 fn main() {
     let app_config = DatabaseConfig::load_config();
