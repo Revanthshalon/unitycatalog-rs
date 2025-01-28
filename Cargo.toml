@@ -1,10 +1,22 @@
 [workspace]
 members = ["server"]
 resolver = "3"
+default-members = ["server"]
+
+[workspace.package]
+name = "rs-unitycatalog"
+edition = "2021"
+license = "Apache-2.0"
+readme = "README.md"
+version = "0.0.1"
+authors = ["Revanth Shalon Raj <revanthshalonraj@gmail.com>"]
+keywords = ["unity", "catalog", "unitycatalog"]
 
 [workspace.dependencies]
-tokio = { version = "1.43.0" }
-serde = { version = "1.0.217" }
-serde_json = { version = "1.0.137" }
-tracing = { version = "0.1.41" }
-tracing-subscriber = { version = "0.3.19" }
+tokio = { version = "^1.43.0" }
+serde = { version = "^1.0.217" }
+serde_json = { version = "^1.0.137" }
+tracing = { version = "^0.1.41" }
+tracing-subscriber = { version = "^0.3.19" }
+uuid = { version = "^1.12.1" }
+chrono = { version = "^0.4.39" }
