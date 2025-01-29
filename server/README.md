@@ -1,4 +1,4 @@
-# UnityCatalog Server
+# UnityCatalog Server (Work in Progress - Not ready yet. Currently act as placeholder for the name)
 
 A Rust implementation of the UnityCatalog server component, providing metadata management and catalog services.
 
