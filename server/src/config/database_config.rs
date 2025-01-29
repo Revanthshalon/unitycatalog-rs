@@ -31,6 +31,7 @@ impl DatabaseConfig {
             .build()?;
 
         let database_config = config.try_deserialize()?;
+        env::remove_var("RUN_MODE");
         Ok(Arc::new(database_config))
     }
 }
