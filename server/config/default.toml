@@ -3,6 +3,7 @@ username = "user"
 password = "password"
 host = "localhost"
 port= 8080
+database_name = "default"
 max_idle_connections = 10
 max_open_connections = 100
 connection_timeout = 30
