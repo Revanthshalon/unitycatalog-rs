@@ -5,9 +5,7 @@ mod persist;
 use config::DatabaseConfig;
 
 fn main() {
-    let app_config = DatabaseConfig::load_config();
-    match app_config {
-        Ok(config) => println!("{:#?}", config),
-        Err(e) => println!("{:#?}", e),
-    }
+    let app_config =
+        DatabaseConfig::load_config(Some("server/config/default".to_string())).unwrap();
+    println!("{}", app_config.get_connection_string().unwrap());
 }
