@@ -24,9 +24,9 @@ impl DatabaseConfig {
         let run_mode = env::var("RUN_MODE").unwrap_or_else(|_| "development".into());
 
         let config = Config::builder()
-            .add_source(File::new("server/config/default", FileFormat::Toml))
+            .add_source(File::new("config/default", FileFormat::Toml))
             .add_source(
-                File::new(&format!("server/config/{}", run_mode), FileFormat::Toml).required(false),
+                File::new(&format!("config/{}", run_mode), FileFormat::Toml).required(false),
             )
             .build()?;
 
@@ -40,13 +40,55 @@ mod tests {
     use super::*;
 
     #[test]
-    pub fn load_config_works() {
-        todo!()
+    pub fn load_test_config_works() {
+        use std::{env, fs};
+
+        env::set_var("RUN_MODE", "test");
+
+        let config_content = r#" database_type = "sqlite"
+username = "test_user"
+password = "test_password"
+host = "localhost"
+port = 5432
+max_idle_connections = 10
+max_open_connections = 100
+connection_timeout = 30"#;
+
+        fs::create_dir_all("config").expect("Failed to create config directory");
+        fs::write("config/test.toml", config_content).expect("Failed to write test config");
+
+        let config = DatabaseConfig::load_config();
+
+        assert!(config.is_ok());
+
+        let config = config.unwrap();
+        assert_eq!(config.database_type, "sqlite");
+        assert_eq!(config.username, "test_user");
+        assert_eq!(config.password, "test_password");
+        assert_eq!(config.host, "localhost");
+        assert_eq!(config.port, 5432);
+        assert_eq!(config.max_idle_connections, 10);
+        assert_eq!(config.max_open_connections, 100);
+        assert_eq!(config.connection_timeout, 30);
+
+        fs::remove_file("config/test.toml").expect("Failed to delete config file");
     }
 
     #[test]
-    pub fn load_config_missing_file() {
+    pub fn load_default_config_works() {
         let config = DatabaseConfig::load_config();
-        assert!(config.is_err())
+
+        assert!(config.is_ok());
+
+        let config = config.unwrap();
+
+        assert_eq!(config.database_type, "postgres");
+        assert_eq!(config.username, "user");
+        assert_eq!(config.password, "password");
+        assert_eq!(config.host, "localhost");
+        assert_eq!(config.port, 8080);
+        assert_eq!(config.max_idle_connections, 10);
+        assert_eq!(config.max_open_connections, 100);
+        assert_eq!(config.connection_timeout, 30);
     }
 }
